@@ -73,7 +73,7 @@ def create_log_file(logs, file_name):
 
 
 
-
+# my implementation (slower than opencv)
 def abs_diff(img1,img2):
     diffrance = np.zeros(img1.shape)
     for row_count in range(img1.shape[0]):
@@ -92,7 +92,8 @@ def abs_diff_gray(img1,img2):
     return diffrance
 
 
-
+# dataset
+# http://www.changedetection.net  Dataset>2012>Baseline
 
 test_img_root_path = "C:\\Users\\can\\ProjectDependencies\\datasets\\computer_vision\\highway\\input\\"
 validation_img_root_path = "C:\\Users\\can\\ProjectDependencies\\datasets\\computer_vision\\highway\\groundtruth\\"
@@ -129,7 +130,7 @@ while(True):
     # find difference and treshold
     # difference = abs_diff_gray(medianFrame, frame)
     difference = cv2.absdiff(medianFrame, test_img)
-    _, thresholded_img  = cv2.threshold(difference, 35, 255, cv2.THRESH_BINARY)
+    _, thresholded_img = cv2.threshold(difference, 35, 255, cv2.THRESH_BINARY)
 
     # save_image(os.path.join(save_path, test_img_name), thresholded_img)
 
